@@ -1,0 +1,42 @@
+mysql:
+  cpus: 1
+  memory: 512
+  count: 1
+  ip: 192.168.100.2
+  mysql_root_password: P@ss123
+  db_name: &db_name wordpress
+  db_user: &db_user wp_user
+  db_password: &db_password wp_password
+
+wordpress:
+  cpus: 1
+  memory: 512
+  count: 2
+  ip: 
+    - 192.168.100.3
+    - 192.168.100.6
+  version: &version 5.5.1
+  php_version: &php_version 7.2
+  install_path: /opt/wordpress
+  nfs_share_ip: 192.168.100.4
+  db_ip: 192.168.100.2
+  wp_db_user: *db_user
+  wp_db_password: *db_password
+  wp_db_name: *db_name
+  wp_admin_user: *db_user
+  wp_admin_password: *db_password
+  site: wordpress.test
+
+nfs:
+  cpus: 1
+  memory: 512
+  count: 1
+  ip: 192.168.100.4
+  wordpress_version: *version
+  php_version: *php_version
+
+apache2:
+  cpus: 1
+  memory: 256
+  count: 1
+  ip: 192.168.100.5
