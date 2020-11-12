@@ -1,10 +1,10 @@
-#!/usr/bin/env bash
+#!/bin/bash
 
 backend=$1
 sed -i -e 's/#DNS=/DNS=8.8.8.8/' /etc/systemd/resolved.conf
 service systemd-resolved restart
 
-apt-get update
+sudo apt-get update
 apt-get install -y apache2
 
 a2enmod proxy

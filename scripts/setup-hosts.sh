@@ -1,4 +1,5 @@
 #!/bin/bash
+
 set -e
 
 echo "192.168.100.2 mysql" >> /etc/hosts

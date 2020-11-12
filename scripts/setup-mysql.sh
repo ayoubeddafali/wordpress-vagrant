@@ -1,10 +1,11 @@
-#!/usr/bin/env bash
+#!/bin/bash
 
 mysql_root_password=$1
 db_name=$2
 db_user=$3
 db_password=$4
 
+sudo apt-get update -y 
 
 sed -i -e 's/#DNS=/DNS=8.8.8.8/' /etc/systemd/resolved.conf
 service systemd-resolved restart

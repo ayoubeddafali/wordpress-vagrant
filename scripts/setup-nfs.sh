@@ -1,8 +1,10 @@
-#!/usr/bin/env bash
+#!/bin/bash
 
 wp_version=$1
 php_version=$2
 wp_path="/mnt/wordpress"
+
+sudo apt-get update
 
 sed -i -e 's/#DNS=/DNS=8.8.8.8/' /etc/systemd/resolved.conf
 service systemd-resolved restart

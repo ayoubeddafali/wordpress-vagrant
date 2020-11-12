@@ -1,4 +1,4 @@
-#!/usr/bin/env bash
+#!/bin/bash
 
 php_version=$1
 install_path=$2
@@ -9,10 +9,11 @@ wp_db_password=$6
 wp_db_name=$7
 hostname=$8
 
+apt-get update
+
 
 sed -i -e 's/#DNS=/DNS=8.8.8.8/' /etc/systemd/resolved.conf
 service systemd-resolved restart
-
 
 add-apt-repository -y ppa:ondrej/php
 apt-get update

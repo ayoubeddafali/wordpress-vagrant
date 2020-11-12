@@ -28,7 +28,7 @@ Vagrant.configure("2") do |config|
       end 
 
       node.vm.hostname = "mysql-#{i}"
-      node.vm.network :private_network, ip: mysql["ip"], name: "vboxnet5"
+      node.vm.network :private_network, ip: mysql["ip"]
       node.vm.provision "setup-hosts", type: "shell", :path => "scripts/setup-hosts.sh"
       node.vm.provision "setup-mysql", type: "shell", :path => "scripts/setup-mysql.sh" do |s|
         s.args = ["#{mysql['mysql_root_password']}", "#{mysql['db_name']}", "#{mysql['db_user']}", "#{mysql['db_password']}"]
@@ -46,7 +46,7 @@ Vagrant.configure("2") do |config|
       end 
 
       node.vm.hostname = "nfs-#{i}"
-      node.vm.network :private_network, ip: nfs["ip"], name: "vboxnet5"
+      node.vm.network :private_network, ip: nfs["ip"]
       node.vm.provision "setup-hosts", type: "shell", :path => "scripts/setup-hosts.sh"
       node.vm.provision "setup-nfs", type: "shell", :path => "scripts/setup-nfs.sh" do |s|
         s.args = ["#{nfs['wordpress_version']}", "#{nfs['php_version']}"]
@@ -83,7 +83,7 @@ Vagrant.configure("2") do |config|
       end 
 
       node.vm.hostname = "wordpress.test"
-      node.vm.network :private_network, ip: apache["ip"], name: "vboxnet5"
+      node.vm.network :private_network, ip: apache["ip"]
       node.vm.provision "setup-hosts", type: "shell", :path => "scripts/setup-hosts.sh"
       node.vm.provision "setup-apache", type: "shell", :path => "scripts/setup-apache.sh"
     end 
